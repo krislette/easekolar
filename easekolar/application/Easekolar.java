@@ -35,14 +35,14 @@ public class Easekolar extends JFrame {
     private Color clrLightPink = new Color(255, 182, 193);
     private Color clrDarkPink = new Color(204, 108, 122);
     private String[] arrSidebarTitles = {"Home",
-                                        "DS2", 
-                                        "DSA", 
-                                        "OOP", 
-                                        "LogDes", 
-                                        "ModSim", 
-                                        "Elective", 
-                                        "Ethics", 
-                                        "PathFit"};
+                                         "DS2", 
+                                         "DSA", 
+                                         "OOP", 
+                                         "LogDes", 
+                                         "ModSim", 
+                                         "Elective", 
+                                         "Ethics", 
+                                         "PathFit"};
 
     public Easekolar() {
         super("EASEkolar");
