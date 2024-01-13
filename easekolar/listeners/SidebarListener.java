@@ -1,6 +1,7 @@
 package easekolar.listeners;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,6 +39,7 @@ public class SidebarListener implements ActionListener {
     public JPanel makeSubjectPanel(String contentText) {
         JPanel pnlSwitchedPanel = new JPanel();
         pnlSwitchedPanel.add(new JLabel(contentText));
+        pnlSwitchedPanel.setBackground(Color.WHITE);
         return pnlSwitchedPanel;
     }
 
