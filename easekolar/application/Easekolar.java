@@ -109,7 +109,7 @@ public class Easekolar extends JFrame {
         pnlBody.setPreferredSize(new Dimension(250, 250));
         pnlBody.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
-    
+
     public void makeTaskPanel() {
         pnlAllTasksPanel = new JPanel(new GridLayout(0, 1, 10, 10));
         pnlAllTasksPanel.setBackground(clrLightPink);
@@ -158,7 +158,7 @@ public class Easekolar extends JFrame {
         revalidate();
         repaint();
     }
-    
+
     public void addTaskPanel(String strTaskName, String strTaskDescription) {
         createTaskPanels(strTaskName, strTaskDescription);
         arrTasks.add(new Task(strTaskName, strTaskDescription));
