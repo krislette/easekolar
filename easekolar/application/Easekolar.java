@@ -32,6 +32,7 @@ public class Easekolar extends JFrame {
     private JButton[] arrSubjectButtons;
     private JScrollPane scrTaskList;
     private Integer intTaskCount = 0;
+    private Color clrMaroon = new Color(123, 17, 19);
     private String[] arrSidebarTitles = {"Home",
                                         "DS2", 
                                         "DSA", 
@@ -64,13 +65,23 @@ public class Easekolar extends JFrame {
 
     public void makeHeader() {
         pnlHeader = new JPanel(new BorderLayout());
-        pnlHeader.setBackground(Color.BLACK);
+        pnlHeader.setBackground(Color.WHITE);
         pnlHeader.setPreferredSize(new Dimension(getWidth(), 80));
+    
+        JPanel headerContentPanel = new JPanel();
+        headerContentPanel.setOpaque(false);
+    
+        JLabel lblHeaderTitle = new JLabel("Header");
+        lblHeaderTitle.setForeground(Color.WHITE);
+        lblHeaderTitle.setFont(new Font("Consolas", Font.BOLD, 77));
+    
+        headerContentPanel.add(lblHeaderTitle);
+        pnlHeader.add(headerContentPanel, BorderLayout.CENTER);
     }
 
     public void makeSidebar() {
         pnlSidebar = new JPanel(new FlowLayout());
-        pnlSidebar.setBackground(Color.BLACK);
+        pnlSidebar.setBackground(clrMaroon);
         pnlSidebar.setPreferredSize(new Dimension(250, getHeight()));
         JLabel lblTitle = new JLabel("LOGO");
         lblTitle.setForeground(Color.WHITE);
@@ -81,6 +92,7 @@ public class Easekolar extends JFrame {
 
         for (int i = 0; i < arrSubjectButtons.length; i++) {
             arrSubjectButtons[i] = new JButton(arrSidebarTitles[i]);
+            arrSubjectButtons[i].setBackground(Color.YELLOW);
             arrSubjectButtons[i].addActionListener(new SidebarListener(this));
             arrSubjectButtons[i].addMouseListener(new HoverListener());
             arrSubjectButtons[i].setPreferredSize(new Dimension(230, 50));
@@ -91,7 +103,7 @@ public class Easekolar extends JFrame {
 
     public void makeMainPanel() {
         pnlBody = new JPanel(new BorderLayout());
-        pnlBody.setBackground(Color.WHITE);
+        pnlBody.setBackground(clrMaroon);
         pnlBody.setPreferredSize(new Dimension(250, 250));
         pnlBody.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
@@ -107,12 +119,13 @@ public class Easekolar extends JFrame {
 
     public void makeButtonPanel() {
         btnAddTask = new JButton("+ Add Task");
+        btnAddTask.setBackground(Color.YELLOW);
         btnAddTask.setPreferredSize(new Dimension(getWidth(), 50));
         btnAddTask.setFocusable(false);
         btnAddTask.addActionListener(new AddTaskListener(this));
         btnAddTask.addMouseListener(new HoverListener());
         pnlButtonPanel = new JPanel(new BorderLayout());
-        pnlButtonPanel.setBackground(Color.WHITE);
+        pnlButtonPanel.setBackground(clrMaroon);
         pnlButtonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
     }
 
