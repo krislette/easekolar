@@ -14,6 +14,7 @@ import easekolar.application.Easekolar;
 public class SidebarListener implements ActionListener {
 
     private Easekolar sklMainFrame;
+    private Color clrLightPink = new Color(255, 182, 193);
 
     public SidebarListener(Easekolar sklMainFrame) {
         this.sklMainFrame = sklMainFrame;
@@ -39,7 +40,7 @@ public class SidebarListener implements ActionListener {
     public JPanel makeSubjectPanel(String contentText) {
         JPanel pnlSwitchedPanel = new JPanel();
         pnlSwitchedPanel.add(new JLabel(contentText));
-        pnlSwitchedPanel.setBackground(Color.WHITE);
+        pnlSwitchedPanel.setBackground(clrLightPink);
         return pnlSwitchedPanel;
     }
 
