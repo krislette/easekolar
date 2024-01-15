@@ -3,14 +3,14 @@ package easekolar.tasks;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.TextArea;
-import java.awt.TextField;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import easekolar.application.Easekolar;
 import easekolar.listeners.HoverListener;
@@ -19,17 +19,21 @@ import easekolar.listeners.DialogListener;
 public class AddTaskDialog extends JDialog {
 
     public Easekolar sklMainFrame;
-    public JPanel pnlSubjectTags;
-    public JPanel pnlMiscTags;
+
+    public JPanel pnlSubjectTags, pnlMiscTags;
     public JPanel pnlAddTask;
+
     public JLabel lblTaskName, lblDescription;
     public JLabel lblSubjectTags, lblMiscTags;
     public JLabel lblDeadline;
-    public TextField txtTaskName;
-    public TextArea txtTaskDescription;
+
+    public JTextField txtTaskName;
+    public JTextArea txtTaskDescription;
+
     public JButton[] arrSubjectTags;
     public JButton[] arrMiscTags;
     public JButton btnAddTask;
+
     public String[] arrMiscTitles = {"Project", 
                                      "Activity", 
                                      "Quizzes", 
@@ -88,14 +92,16 @@ public class AddTaskDialog extends JDialog {
 
     public void makeTaskName() {
         lblTaskName = new JLabel("Task Name");
-        txtTaskName = new TextField();
+        txtTaskName = new JTextField();
         txtTaskName.setPreferredSize(new Dimension(675, 25));
     }
 
     public void makeTaskDescription() {
         lblDescription = new JLabel("Task Description");
-        txtTaskDescription = new TextArea();
+        txtTaskDescription = new JTextArea();
         txtTaskDescription.setPreferredSize(new Dimension(675, 150));
+        txtTaskDescription.setLineWrap(true);
+        txtTaskDescription.setWrapStyleWord(true);
     }
 
     // TODO: MAKE A HELPER METHOD FOR SUBJECT TAGS AND MISC TAGS

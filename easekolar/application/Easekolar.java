@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import easekolar.listeners.AddTaskListener;
@@ -25,15 +27,21 @@ import easekolar.tasks.Task;
 public class Easekolar extends JFrame {
 
     private ArrayList<Task> arrTasks = new ArrayList<Task>();
+    private Integer intTaskCount = 0;
+
     private JPanel pnlHeader, pnlSidebar, pnlBody;
     private JPanel pnlAllTasksPanel, pnlButtonPanel;
     private JPanel pnlTaskPanel;
+
     private JButton btnAddTask;
     private JButton[] arrSubjectButtons;
+
     private JScrollPane scrTaskList;
-    private Integer intTaskCount = 0;
+    private JScrollPane scrTaskPane;
+
     private Color clrLightPink = new Color(255, 182, 193);
     private Color clrDarkPink = new Color(204, 108, 122);
+
     private String[] arrSidebarTitles = {"Home",
                                          "DS2", 
                                          "DSA", 
@@ -94,6 +102,7 @@ public class Easekolar extends JFrame {
 
         for (int i = 0; i < arrSubjectButtons.length; i++) {
             arrSubjectButtons[i] = new JButton(arrSidebarTitles[i]);
+            arrSubjectButtons[i].setBorder(null);
             arrSubjectButtons[i].setBackground(Color.WHITE);
             arrSubjectButtons[i].addActionListener(new SidebarListener(this));
             arrSubjectButtons[i].addMouseListener(new HoverListener());
@@ -114,6 +123,7 @@ public class Easekolar extends JFrame {
         pnlAllTasksPanel = new JPanel(new GridLayout(0, 1, 10, 10));
         pnlAllTasksPanel.setBackground(clrLightPink);
         scrTaskList = new JScrollPane(pnlAllTasksPanel);
+        scrTaskList.setBorder(null);
         scrTaskList.setPreferredSize(new Dimension(250, 440));
         scrTaskList.setVerticalScrollBarPolicy(ScrollPaneConstants
                                                .VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -121,6 +131,7 @@ public class Easekolar extends JFrame {
 
     public void makeButtonPanel() {
         btnAddTask = new JButton("+ Add Task");
+        btnAddTask.setBorder(null);
         btnAddTask.setBackground(clrDarkPink);
         btnAddTask.setForeground(Color.BLACK);
         btnAddTask.setPreferredSize(new Dimension(getWidth(), 50));
@@ -145,14 +156,27 @@ public class Easekolar extends JFrame {
     // Helper method for addTaskPanel and loadHome method.
     public void createTaskPanels(String strTaskName, String strTaskDescription) {
         pnlTaskPanel = new JPanel(new BorderLayout());
-
-        pnlTaskPanel.setPreferredSize(new Dimension(50, 50));
+        pnlTaskPanel.setPreferredSize(new Dimension(200, 100));
         pnlTaskPanel.setBackground(clrDarkPink);
 
-        JLabel lblTaskName = new JLabel(strTaskName);
-        JLabel lblTaskDescription = new JLabel(strTaskDescription);
-        pnlTaskPanel.add(lblTaskName, BorderLayout.NORTH);
-        pnlTaskPanel.add(lblTaskDescription, BorderLayout.CENTER);
+        JTextField txtTaskName = new JTextField(strTaskName);
+        txtTaskName.setBorder(null);
+        txtTaskName.setFont(new Font("Consolas", Font.BOLD, 15));
+        txtTaskName.setEditable(true);
+        txtTaskName.setBackground(clrDarkPink);
+
+        JTextArea txtTaskDescription = new JTextArea(strTaskDescription);
+        txtTaskDescription.setBorder(null);
+        txtTaskDescription.setFont(new Font("Consolas", Font.PLAIN, 12));
+        txtTaskDescription.setLineWrap(true);
+        txtTaskDescription.setWrapStyleWord(true);
+        txtTaskDescription.setEditable(true);
+
+        scrTaskPane = new JScrollPane(txtTaskDescription);
+        scrTaskPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        pnlTaskPanel.add(txtTaskName, BorderLayout.NORTH);
+        pnlTaskPanel.add(scrTaskPane, BorderLayout.CENTER);
         pnlAllTasksPanel.add(pnlTaskPanel);
 
         revalidate();
