@@ -21,6 +21,7 @@ import javax.swing.ScrollPaneConstants;
 
 import easekolar.listeners.AddTaskListener;
 import easekolar.listeners.HoverListener;
+import easekolar.listeners.FrameKeyListener;
 import easekolar.listeners.SidebarListener;
 import easekolar.tasks.Task;
 
@@ -62,6 +63,7 @@ public class Easekolar extends JFrame {
         ImageIcon imgFavicon = new ImageIcon("easekolar/logo.png");
         setIconImage(imgFavicon.getImage());
         setBackground(clrDarkPink);
+        addKeyListener(new FrameKeyListener(this));
 
         makeHeader();
         makeSidebar();
